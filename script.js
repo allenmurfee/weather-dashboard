@@ -3,11 +3,13 @@ var searchBox = $("#search");
 var searchButton = $("#searchButton");
 
 var currentConditions = $("#current-conditions");
-var recentSearches = $("#recent");
+var searchHistory = $("#history");
+var fiveDayForecast = $("#forecast");
 
 //Hide Current conditions and recent searches on page load. Will probably need to change recent searches since it should load if there's local storage
 currentConditions.hide();
-recentSearches.hide();
+searchHistory.hide();
+fiveDayForecast.hide();
 
 //Functions
 function getInfo(city) {
@@ -74,13 +76,35 @@ function displayWeather(data) {
   $("#temp").text("Temperature: " + data.list[0].main.temp);
   $("#wind").text("Wind: " + data.list[0].wind.speed);
   $("#humidity").text("Humidity: " + data.list[0].main.humidity);
+
+  createForecastCards(data);
 }
+
+function createForecastCards(data) {
+  fiveDayForecast.show();
+
+  var cardCode = "";
+
+  for (var i = 1; i < data.list.length; i += 8) {
+    var date = data.list[i].dt_txt;
+    var forecastTemp = data.list[i].main.temp;
+    var forecastWind = data.list[i].wind.speed;
+    var forecastHumidity = data.list[i].main.humidity;
+
+    cardCode +=
+      "<div class='card' bg-light>" +
+      "<p>Date: +date[i]</p>" +
+      "<p>Temp: +forecastTemp[i]</p>" +
+      "<p>Wind: +forecastWind[i]</p>" +
+      "<p>Hum: +forecaseHumidity[i]</p>" +
+      "</div>";
+
+    $("#week").html(cardCode);
+  }
+}
+
+var recentCities = [];
 
 //Click Events
 
 $("#searchButton").on("click", getInfo);
-
-//Will need later for 5-day display.
-// for (var i = 0; i < weatherForecast.list.length; i+=8) {
-//     console.log(weatherForecast.list[i].dt_txt);
-//   }
