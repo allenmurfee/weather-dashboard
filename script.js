@@ -73,9 +73,9 @@ function displayWeather(data) {
   currentConditions.show();
   console.log(data);
   $("#city-name").text(searchBox.val());
-  $("#temp").text("Temperature: " + data.list[0].main.temp);
-  $("#wind").text("Wind: " + data.list[0].wind.speed);
-  $("#humidity").text("Humidity: " + data.list[0].main.humidity);
+  $("#temp").text("Temperature: " + data.list[0].main.temp + " F");
+  $("#wind").text("Wind: " + data.list[0].wind.speed + " MPH");
+  $("#humidity").text("Humidity: " + data.list[0].main.humidity + "%");
 
   createForecastCards(data);
 }
@@ -92,12 +92,17 @@ function createForecastCards(data) {
     var forecastHumidity = data.list[i].main.humidity;
 
     cardCode +=
-      "<div class='card' bg-light>" +
-      "<p>Date: +date[i]</p>" +
-      "<p>Temp: +forecastTemp[i]</p>" +
-      "<p>Wind: +forecastWind[i]</p>" +
-      "<p>Hum: +forecaseHumidity[i]</p>" +
-      "</div>";
+      "<div class='card' bg-light> <p>Date: " +
+      date +
+      "</p> <p>Temp: " +
+      forecastTemp +
+      "</p> <p>Wind: " +
+      forecastWind +
+      " MPH" +
+      "</p> <p>Hum: " +
+      forecastHumidity +
+      "%" +
+      "</p> </div>";
 
     $("#week").html(cardCode);
   }
