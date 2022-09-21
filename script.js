@@ -35,7 +35,11 @@ function getInfo(city) {
 function getWeather(geoData) {
   var apiKey = "5e5caac541b127539886bcfa14cf538f";
   var apiUrl =
-    "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=" +
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    lat +
+    "&lon=" +
+    lat +
+    "&appid=" +
     apiKey;
 
   var lon = geoData[0].lon;
