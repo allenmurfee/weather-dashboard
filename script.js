@@ -96,15 +96,15 @@ function createForecastCards(data) {
       $("#week")
         .children(0)
         .html(
-          "<div><p>" +
-            date +
+          "<p>" +
+            `${date}` +
             "</p> <p>Temp: " +
-            forecastTemp +
+            forecastTemp[i] +
             "</p><p>Wind: " +
             forecastWind[i] +
             "</p><p>Humidity: " +
             forecastHumidity[i] +
-            "</p></div>"
+            "</p>"
         );
     } else if (i === 9) {
       $("#week")
