@@ -82,33 +82,89 @@ function displayWeather(data) {
 
 function createForecastCards(data) {
   fiveDayForecast.show();
-
-  var cardCode = "";
+  var id = $("#week").children(); //.attr("#id") ?
 
   for (var i = 1; i < data.list.length; i += 8) {
+    console.log(data.list.length);
     var date = data.list[i].dt_txt;
     var forecastTemp = data.list[i].main.temp;
     var forecastWind = data.list[i].wind.speed;
     var forecastHumidity = data.list[i].main.humidity;
 
-    cardCode +=
-      "<div class='card' bg-light> <p>Date: " +
-      date +
-      "</p> <p>Temp: " +
-      forecastTemp +
-      "</p> <p>Wind: " +
-      forecastWind +
-      " MPH" +
-      "</p> <p>Hum: " +
-      forecastHumidity +
-      "%" +
-      "</p> </div>";
-
-    $("#week").html(cardCode);
+    if (i === 1) {
+      console.log(date);
+      $("#week")
+        .children(0)
+        .html(
+          "<div><p>" +
+            date +
+            "</p> <p>Temp: " +
+            forecastTemp +
+            "</p><p>Wind: " +
+            forecastWind[i] +
+            "</p><p>Humidity: " +
+            forecastHumidity[i] +
+            "</p></div>"
+        );
+    } else if (i === 9) {
+      $("#week")
+        .children(1)
+        .html(
+          "<div><p>" +
+            date[9] +
+            "</p> <p>Temp: " +
+            forecastTemp[9] +
+            "</p><p>Wind: " +
+            forecastWind[9] +
+            "</p><p>Humidity: " +
+            forecastHumidity[9] +
+            "</p></div>"
+        );
+    } else if (i === 17) {
+      $("#week")
+        .children(2)
+        .html(
+          "<div><p>" +
+            date[17] +
+            "</p> <p>Temp: " +
+            forecastTemp[17] +
+            "</p><p>Wind: " +
+            forecastWind[17] +
+            "</p><p>Humidity: " +
+            forecastHumidity[17] +
+            "</p></div>"
+        );
+    } else if (i === 25) {
+      $("#week")
+        .children(3)
+        .html(
+          "<div><p>" +
+            date[25] +
+            "</p> <p>Temp: " +
+            forecastTemp[25] +
+            "</p><p>Wind: " +
+            forecastWind[25] +
+            "</p><p>Humidity: " +
+            forecastHumidity[25] +
+            "</p></div>"
+        );
+    } else if (i === 33) {
+      $("#week")
+        .children(4)
+        .html(
+          "<div><p>" +
+            date[33] +
+            "</p> <p>Temp: " +
+            forecastTemp[33] +
+            "</p><p>Wind: " +
+            forecastWind[33] +
+            "</p><p>Humidity: " +
+            forecastHumidity[33] +
+            "</p></div>"
+        );
+    }
   }
 }
-
-var recentCities = [];
 
 //Click Events
 
