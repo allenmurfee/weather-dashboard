@@ -103,7 +103,7 @@ function createForecastCards(data) {
       );
     } else if (i === 9) {
       $("#week").append(
-        "<div class='col-2 m-2 card bg-secondary border' ><p>" +
+        "<div class='col-2 m-2 card bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
@@ -127,7 +127,7 @@ function createForecastCards(data) {
       );
     } else if (i === 25) {
       $("#week").append(
-        "<div class='col-2 m-2 card bg-secondary border' ><p>" +
+        "<div class='col-2 m-2 card bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
