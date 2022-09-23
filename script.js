@@ -91,7 +91,7 @@ function createForecastCards(data) {
 
     if (i === 1) {
       $("#week").append(
-        "<div class='bg-light border' ><p>" +
+        "<div class='col-2 m-2 card bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
@@ -103,7 +103,7 @@ function createForecastCards(data) {
       );
     } else if (i === 9) {
       $("#week").append(
-        "<div class='bg-secondary border' ><p>" +
+        "<div class='col-2 m-2 card bg-secondary border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
@@ -115,7 +115,7 @@ function createForecastCards(data) {
       );
     } else if (i === 17) {
       $("#week").append(
-        "<div class='bg-light border' ><p>" +
+        "<div class='col-2 m-2 card bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
@@ -127,7 +127,7 @@ function createForecastCards(data) {
       );
     } else if (i === 25) {
       $("#week").append(
-        "<div class='bg-secondary border' ><p>" +
+        "<div class='col-2 m-2 card bg-secondary border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
@@ -139,7 +139,7 @@ function createForecastCards(data) {
       );
     } else if (i === 33) {
       $("#week").append(
-        "<div class='bg-light border' ><p>" +
+        "<div class='col-2 m-2 card bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
