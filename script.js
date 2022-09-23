@@ -13,7 +13,6 @@ fiveDayForecast.hide();
 
 //Functions
 function getInfo(city) {
-  var city = searchBox.val();
   console.log(city);
 
   var apiKey = "5e5caac541b127539886bcfa14cf538f";
@@ -29,7 +28,7 @@ function getInfo(city) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          getWeather(data);
+          getWeather(city, data);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -40,7 +39,7 @@ function getInfo(city) {
     });
 }
 
-function getWeather(data) {
+function getWeather(city, data) {
   var lon = data[0].lon;
   var lat = data[0].lat;
 
@@ -58,7 +57,8 @@ function getWeather(data) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayWeather(data);
+          console.log(data);
+          displayWeather(city, data);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -69,10 +69,10 @@ function getWeather(data) {
     });
 }
 
-function displayWeather(data) {
+function displayWeather(city, data) {
   currentConditions.show();
   console.log(data);
-  $("#city-name").text(searchBox.val());
+  $("#city-name").text(city + ", " + data.list[0].dt_txt);
   $("#temp").text("Temperature: " + data.list[0].main.temp + " F");
   $("#wind").text("Wind: " + data.list[0].wind.speed + " MPH");
   $("#humidity").text("Humidity: " + data.list[0].main.humidity + "%");
@@ -95,64 +95,82 @@ function createForecastCards(data) {
           date +
           "</p> <p>Temp: " +
           forecastTemp +
-          "</p><p>Wind: " +
+          " F </p><p>Wind: " +
           forecastWind +
-          "</p><p>Humidity: " +
+          " MPH</p><p>Humidity: " +
           forecastHumidity +
-          "</p></div>"
+          "%</p></div>"
       );
     } else if (i === 9) {
       $("#week").append(
-        "<div class='bg-secondary border'><p>" +
+        "<div class='bg-secondary border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
-          "</p><p>Wind: " +
+          " F </p><p>Wind: " +
           forecastWind +
-          "</p><p>Humidity: " +
+          " MPH</p><p>Humidity: " +
           forecastHumidity +
-          "</p></div>"
+          "%</p></div>"
       );
     } else if (i === 17) {
       $("#week").append(
-        "<div class='bg-light border'><p>" +
+        "<div class='bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
-          "</p><p>Wind: " +
+          " F </p><p>Wind: " +
           forecastWind +
-          "</p><p>Humidity: " +
+          " MPH</p><p>Humidity: " +
           forecastHumidity +
-          "</p></div>"
+          "%</p></div>"
       );
     } else if (i === 25) {
       $("#week").append(
-        "<div class='bg-secondary border'><p>" +
+        "<div class='bg-secondary border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
-          "</p><p>Wind: " +
+          " F </p><p>Wind: " +
           forecastWind +
-          "</p><p>Humidity: " +
+          " MPH</p><p>Humidity: " +
           forecastHumidity +
-          "</p></div>"
+          "%</p></div>"
       );
     } else if (i === 33) {
       $("#week").append(
-        "<div class='bg-light border'><p>" +
+        "<div class='bg-light border' ><p>" +
           date +
           "</p> <p>Temp: " +
           forecastTemp +
-          "</p><p>Wind: " +
+          " F </p><p>Wind: " +
           forecastWind +
-          "</p><p>Humidity: " +
+          " MPH</p><p>Humidity: " +
           forecastHumidity +
-          "</p></div>"
+          "%</p></div>"
       );
     }
   }
 }
 
+function saveInfo(city) {
+  console.log(city);
+  searchHistory.show();
+  var line = $("<li class = 'history-hover'>" + city + "</li>");
+  $("#history").append(line);
+  // var child = $("#history").children().attr("li");
+  line.click(function () {
+    $("#week").children().remove();
+    var city = $(this).text();
+    getInfo(city);
+  });
+}
+
 //Click Events
 
-$("#searchButton").on("click", getInfo);
+$("#searchButton").on("click", function () {
+  getInfo(searchBox.val());
+  saveInfo(searchBox.val());
+  $("#week").children().remove();
+  searchBox.val("");
+});
