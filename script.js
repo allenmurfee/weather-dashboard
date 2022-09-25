@@ -19,7 +19,7 @@ recent();
 function getInfo(city) {
   var apiKey = "5e5caac541b127539886bcfa14cf538f";
   var apiUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     city +
     "&appid=" +
     apiKey;
