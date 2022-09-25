@@ -1,20 +1,22 @@
 //Variables
 var searchBox = $("#search");
 var searchButton = $("#searchButton");
+var clearButton = $("#clearButton");
 
 var currentConditions = $("#current-conditions");
 var searchHistory = $("#history");
 var fiveDayForecast = $("#forecast");
 
-//Hide Current conditions and recent searches on page load. Will probably need to change recent searches since it should load if there's local storage
+var searchList = [];
+
+//Hide content on page load
 currentConditions.hide();
-searchHistory.hide();
 fiveDayForecast.hide();
+
+recent();
 
 //Functions
 function getInfo(city) {
-  console.log(city);
-
   var apiKey = "5e5caac541b127539886bcfa14cf538f";
   var apiUrl =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -155,15 +157,28 @@ function createForecastCards(data) {
 
 function saveInfo(city) {
   console.log(city);
-  searchHistory.show();
+  // searchHistory.show();
   var line = $("<li class = 'history-hover'>" + city + "</li>");
   $("#history").append(line);
+  searchList.push(city);
+  console.log(searchList);
+  localStorage.setItem("local", JSON.stringify(searchList));
+
   // var child = $("#history").children().attr("li");
   line.click(function () {
     $("#week").children().remove();
     var city = $(this).text();
     getInfo(city);
   });
+}
+
+function recent() {
+  var grab = JSON.parse(localStorage.getItem("local"));
+  if (grab != null) {
+    for (var i = 0; i < grab.length; i++) {
+      saveInfo(grab[i]);
+    }
+  }
 }
 
 //Click Events
@@ -173,4 +188,9 @@ $("#searchButton").on("click", function () {
   saveInfo(searchBox.val());
   $("#week").children().remove();
   searchBox.val("");
+});
+
+clearButton.on("click", function () {
+  localStorage.clear();
+  $("#history").children().remove();
 });
