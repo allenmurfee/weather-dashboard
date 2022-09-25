@@ -14,7 +14,7 @@ No installation required. Visit https://allenmurfee.github.io/weather-dashboard/
 
 To use this application, visit https://allenmurfee.github.io/weather-dashboard/. Search a city's weather information by typing the city name in the "Search" box and click the "Search" button - then the data will populate. Once you search something by clicking on the "Search" button, it will add it to your recent history. You can click on any text in your recent history to pull up that city's data again.
 
-    ![weather dashboard application](/assets/screenshot.png)
+![weather dashboard application](/assets/screenshot.png)
 
 ## Credits
 
