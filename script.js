@@ -170,16 +170,16 @@ function saveInfo(city) {
     var city = $(this).text();
     getInfo(city);
   });
-}
+};
 
 function recent() {
   var grab = JSON.parse(localStorage.getItem("local"));
   if (grab != null) {
     for (var i = 0; i < grab.length; i++) {
       saveInfo(grab[i]);
-    }
-  }
-}
+    };
+  };
+};
 
 //Click Events
 
