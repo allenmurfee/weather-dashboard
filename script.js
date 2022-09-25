@@ -157,7 +157,6 @@ function createForecastCards(data) {
 
 function saveInfo(city) {
   console.log(city);
-  // searchHistory.show();
   var line = $("<li class = 'history-hover'>" + city + "</li>");
   $("#history").append(line);
   searchList.push(city);
@@ -170,16 +169,16 @@ function saveInfo(city) {
     var city = $(this).text();
     getInfo(city);
   });
-};
+}
 
 function recent() {
   var grab = JSON.parse(localStorage.getItem("local"));
   if (grab != null) {
     for (var i = 0; i < grab.length; i++) {
       saveInfo(grab[i]);
-    };
-  };
-};
+    }
+  }
+}
 
 //Click Events
 
