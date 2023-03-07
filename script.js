@@ -88,12 +88,13 @@ function createForecastCards(data) {
 
   for (var i = 1; i < data.list.length; i += 8) {
     var date = data.list[i].dt_txt;
+    var formattedDate = date.substring(0, date.length - 8);
     var forecastTemp = data.list[i].main.temp;
     var forecastWind = data.list[i].wind.speed;
     var forecastHumidity = data.list[i].main.humidity;
     var card = $("#week").append(
       "<div class='col-2 m-2 card bg-light border' ><p>" +
-        date +
+        formattedDate +
         "</p> <p>Temp: " +
         forecastTemp +
         " F </p><p>Wind: " +
