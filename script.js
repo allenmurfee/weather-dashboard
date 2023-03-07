@@ -91,7 +91,7 @@ function createForecastCards(data) {
     var forecastTemp = data.list[i].main.temp;
     var forecastWind = data.list[i].wind.speed;
     var forecastHumidity = data.list[i].main.humidity;
-    var append = $("#week").append(
+    var card = $("#week").append(
       "<div class='col-2 m-2 card bg-light border' ><p>" +
         date +
         "</p> <p>Temp: " +
@@ -102,18 +102,20 @@ function createForecastCards(data) {
         forecastHumidity +
         "%</p></div>"
     );
+    $("#week").append(card);
 
-    if (i === 1) {
-      $("#week").append(append);
-    } else if (i === 9) {
-      $("#week").append(append);
-    } else if (i === 17) {
-      $("#week").append(append);
-    } else if (i === 25) {
-      $("#week").append(append);
-    } else if (i === 33) {
-      $("#week").append(append);
-    }
+
+    // if (i === 1) {
+    //   $("#week").append(append);
+    // } else if (i === 9) {
+    //   $("#week").append(append);
+    // } else if (i === 17) {
+    //   $("#week").append(append);
+    // } else if (i === 25) {
+    //   $("#week").append(append);
+    // } else if (i === 33) {
+    //   $("#week").append(append);
+    // }
   }
 }
 
