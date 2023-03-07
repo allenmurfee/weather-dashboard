@@ -74,7 +74,8 @@ function getWeather(city, data) {
 function displayWeather(city, data) {
   currentConditions.show();
   console.log(data);
-  $("#city-name").text(city + ", " + data.list[0].dt_txt);
+  var upperCaseCity = upperCase(city);
+  $("#city-name").text(upperCaseCity + ", " + data.list[0].dt_txt);
   $("#temp").text("Temperature: " + data.list[0].main.temp + " F");
   $("#wind").text("Wind: " + data.list[0].wind.speed + " MPH");
   $("#humidity").text("Humidity: " + data.list[0].main.humidity + "%");
@@ -117,10 +118,11 @@ function createForecastCards(data) {
 }
 
 function saveInfo(city) {
-  console.log(city);
-  var line = $("<li class = 'history-hover'>" + city + "</li>");
+  console.log("city", city);
+  var upperCaseCity = upperCase(city);
+  var line = $("<li class = 'history-hover'>" + upperCaseCity + "</li>");
   $("#history").append(line);
-  searchList.push(city);
+  searchList.push(upperCaseCity);
   console.log(searchList);
   localStorage.setItem("local", JSON.stringify(searchList));
 
@@ -139,6 +141,10 @@ function recent() {
       saveInfo(grab[i]);
     }
   }
+}
+
+function upperCase(city) {
+  return city.charAt(0).toUpperCase() + city.slice(1);
 }
 
 //Click Events
