@@ -92,19 +92,17 @@ function createForecastCards(data) {
     var forecastTemp = data.list[i].main.temp;
     var forecastWind = data.list[i].wind.speed;
     var forecastHumidity = data.list[i].main.humidity;
-    var card = $("#week").append(
+    var card =
       "<div class='col-2 m-2 card bg-light border' ><p>" +
-        formattedDate +
-        "</p> <p>Temp: " +
-        forecastTemp +
-        " F </p><p>Wind: " +
-        forecastWind +
-        " MPH</p><p>Humidity: " +
-        forecastHumidity +
-        "%</p></div>"
-    );
+      formattedDate +
+      "</p> <p>Temp: " +
+      forecastTemp +
+      " F </p><p>Wind: " +
+      forecastWind +
+      " MPH</p><p>Humidity: " +
+      forecastHumidity +
+      "%</p></div>";
     $("#week").append(card);
-
 
     // if (i === 1) {
     //   $("#week").append(append);
@@ -143,6 +141,8 @@ function recent() {
     for (var i = 0; i < grab.length; i++) {
       saveInfo(grab[i]);
     }
+  } else {
+    $("#recent").hide();
   }
 }
 
@@ -162,4 +162,5 @@ $("#searchButton").on("click", () => {
 clearButton.on("click", () => {
   localStorage.clear();
   $("#history").children().remove();
+  window.location.reload()
 });
