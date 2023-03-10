@@ -1,4 +1,10 @@
-.history-hover:hover {  
-    text-decoration: underline;
-    cursor:pointer;
+.history-hover:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 991px) {
+  #searchContainer {
+    width: 100% !important
+  }
 }

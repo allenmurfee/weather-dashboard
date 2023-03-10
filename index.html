@@ -16,13 +16,13 @@
   </head>
   <body>
     <header class="text-center p-3">
-      <h1>Weather Dashboard</h1>
+      <h1 class="display-2">Weather Dashboard</h1>
     </header>
 
     <section>
-      <div class="container">
+      <div  class="container">
         <div class="row">
-          <aside class="col-3">
+          <aside id="searchContainer"class="col-md-3">
             <h3>Search for a city</h3>
             <input id="search" type="text" placeholder="Search.." />
             <button id="searchButton" type="button" class="btn btn-secondary">Search</button>
@@ -33,7 +33,7 @@
             <button id="clearButton" type="button" class="btn btn-secondary">Clear Search History</button>
           </aside>
 
-          <section class="col-8">
+          <section class="col-md-8">
             <div
               id="current-conditions"
               class="p-3 jumbotron bg-dark text-light border rounded"
